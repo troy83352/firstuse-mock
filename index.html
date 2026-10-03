@@ -239,16 +239,14 @@
   when.addEventListener("input", tick);
   rule.addEventListener("change", tick);
   document.getElementById("signin").onclick = () => {
-      const code = document.getElementById("org").value.trim().toUpperCase();
+      const code = document.getElementById("org").value.trim();
       const msg = document.getElementById("gate-msg");
-      if (code === "MVQM") {
-        msg.textContent = "";
-        document.getElementById("board").style.display = "block";
-      } else {
-        document.getElementById("board").style.display = "none";
-        msg.textContent = "That org code is not on file.";
+      if (!code) {
+        msg.textContent = "Enter the organization code.";
         msg.style.color = "#ff6b6b";
+        return;
       }
+      window.location.href = "https://firstuse.dairyforge.com/dashboard/access?return=%2Fdashboard";
     };
 </script>
 </body>
